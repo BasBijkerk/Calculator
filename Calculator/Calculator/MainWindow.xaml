@@ -29,8 +29,10 @@
         <Button Content="8" HorizontalAlignment="Left" Margin="12,124,0,0" VerticalAlignment="Top" Width="20" Grid.Column="1" RenderTransformOrigin="2.091,0.146" Click="Button_Click_8" Grid.ColumnSpan="2"/>
         <Button Content="9" HorizontalAlignment="Left" Margin="21,124,0,0" VerticalAlignment="Top" Width="20" Grid.Column="2" RenderTransformOrigin="2.091,0.146" Click="Button_Click_9"/>
         <Button Content="*" HorizontalAlignment="Left" Margin="60,99,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_Multiply" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="ValueIO" Grid.ColumnSpan="3" Height="54" Margin="10,10,10,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="ValueIO" Grid.ColumnSpan="3" Height="24" Margin="10,10,10,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" TextChanged="TextBox_TextChanged"/>
         <Button Content="C" HorizontalAlignment="Left" Margin="137,124,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_Clear" RenderTransformOrigin="1.989,0.445" Grid.Column="2"/>
+        <Label x:Name="ValueIn" Content="" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Width="79" Height="27" Grid.Column="2"/>
+        <Label Content="Last input Result:" HorizontalAlignment="Left" Margin="4,39,0,0" VerticalAlignment="Top" Width="101" Grid.ColumnSpan="3" Height="26"/>
 
     </Grid>
 </Window>

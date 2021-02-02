@@ -46,6 +46,7 @@ namespace Calculator
             HasFirstValue = true;
             doMin = true;
             Value1 = float.Parse(ValueIO.Text);
+            ValueIn.Content = Value1;
             if (Value1 == float.Parse(ValueIO.Text))
             {
                 ValueIO.Text = "0";
@@ -54,19 +55,21 @@ namespace Calculator
 
         private void Button_Click_Plus(object sender, RoutedEventArgs e)
         {
-                HasFirstValue = true;
-                doPlus = true;
-                Value1 = float.Parse(ValueIO.Text);
-                if(Value1 == float.Parse(ValueIO.Text))
-                {
+            HasFirstValue = true;
+            doPlus = true;
+            Value1 = float.Parse(ValueIO.Text);
+            ValueIn.Content = Value1;
+            if (Value1 == float.Parse(ValueIO.Text))
+            {
                     ValueIO.Text = "0";
-                }
+            }
         }
         private void Button_Click_Multiply(object sender, RoutedEventArgs e)
         {
             HasFirstValue = true;
             doMulti = true;
             Value1 = float.Parse(ValueIO.Text);
+            ValueIn.Content = Value1;
             if (Value1 == float.Parse(ValueIO.Text))
             {
                 ValueIO.Text = "0";
@@ -78,6 +81,7 @@ namespace Calculator
             HasFirstValue = true;
             doDiv = true;
             Value1 = float.Parse(ValueIO.Text);
+            ValueIn.Content = Value1;
             if (Value1 == float.Parse(ValueIO.Text))
             {
                 ValueIO.Text = "0";
@@ -93,6 +97,7 @@ namespace Calculator
                 {
                     ValueIO.Text = Convert.ToString(Value1 + Value2);
                     Value1 = float.Parse(ValueIO.Text);
+                    ValueIn.Content = Value1;
                     Value2 = 0;
                 }
             }
@@ -105,6 +110,7 @@ namespace Calculator
                 {
                     ValueIO.Text = Convert.ToString(Value1 - Value2);
                     Value1 = float.Parse(ValueIO.Text);
+                    ValueIn.Content = Value1;
                     Value2 = 0;
                 }
             }
@@ -117,6 +123,7 @@ namespace Calculator
                 {
                     ValueIO.Text = Convert.ToString(Value1 * Value2);
                     Value1 = float.Parse(ValueIO.Text);
+                    ValueIn.Content = Value1;
                     Value2 = 0;
                 }
             }
@@ -129,6 +136,7 @@ namespace Calculator
                 {
                     ValueIO.Text = Convert.ToString(Value1 / Value2);
                     Value1 = float.Parse(ValueIO.Text);
+                    ValueIn.Content = Value1;
                     Value2 = 0;
                 }
             }
@@ -139,6 +147,7 @@ namespace Calculator
             Value1 = 0;
             Value2 = 0;
             ValueIO.Text = "0";
+            ValueIn.Content = "";
 
 
             HasFirstValue = false;
