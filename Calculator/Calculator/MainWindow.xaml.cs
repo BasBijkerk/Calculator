@@ -33,71 +33,187 @@ namespace Calculator
         public bool doMin = false;
         public bool doMulti = false;
         public bool doDiv = false;
+
+        public bool Euro = false;
+        public bool Pct = false;
+
+
+        public string ActualValue;
+
+        public string EuroPrefix = "€ ";
+        public string PctPrefix = "% ";
         public MainWindow()
         {
             InitializeComponent();
         }
 
 
+        private void GetRidPrefix()
+        {
+            
+            if(ValueIO.Text.Contains("€") && Euro)
+            {
+                string[] vs = ValueIO.Text.Split('€', ' ');
+                ActualValue = vs[vs.Length - 1];
+            }
+            if(ValueIO.Text.Contains("%") && Pct)
+            {
+                string[] vs = ValueIO.Text.Split('%', ' ');
+                ActualValue = vs[vs.Length - 1];
+            }
+            if(!ValueIO.Text.Contains("%") && !Pct && !ValueIO.Text.Contains("€") && !Euro)
+            {
+                ActualValue = ValueIO.Text;
+            }
+            
+        }
+
 
 
         private void Button_Click_Min(object sender, RoutedEventArgs e)
         {
+            GetRidPrefix();
             HasFirstValue = true;
             doMin = true;
-            Value1 = float.Parse(ValueIO.Text);
+            Value1 = float.Parse(ActualValue);
             ValueIn.Content = Value1;
-            if (Value1 == float.Parse(ValueIO.Text))
+            if (Value1 == float.Parse(ActualValue))
             {
-                ValueIO.Text = "0";
+                if (!Euro && !Pct)
+                {
+                    ValueIO.Text = "0";
+                }
+                else
+                {
+                    if (Euro)
+                    {
+                        ValueIO.Text = EuroPrefix + "0";
+                    }
+                    if (Pct)
+                    {
+                        ValueIO.Text = PctPrefix + "0";
+                    }
+                }
             }
         }
 
         private void Button_Click_Plus(object sender, RoutedEventArgs e)
         {
+            GetRidPrefix();
             HasFirstValue = true;
             doPlus = true;
-            Value1 = float.Parse(ValueIO.Text);
+            Value1 = float.Parse(ActualValue);
             ValueIn.Content = Value1;
-            if (Value1 == float.Parse(ValueIO.Text))
+            if (Value1 == float.Parse(ActualValue))
             {
+                if (!Euro && !Pct)
+                {
                     ValueIO.Text = "0";
+                }
+                else
+                {
+                    if (Euro)
+                    {
+                        ValueIO.Text = EuroPrefix + "0";
+                    }
+                    if (Pct)
+                    {
+                        ValueIO.Text = PctPrefix + "0";
+                    }
+                }
             }
         }
         private void Button_Click_Multiply(object sender, RoutedEventArgs e)
         {
+            GetRidPrefix();
             HasFirstValue = true;
             doMulti = true;
-            Value1 = float.Parse(ValueIO.Text);
+            Value1 = float.Parse(ActualValue);
             ValueIn.Content = Value1;
-            if (Value1 == float.Parse(ValueIO.Text))
+            if (Value1 == float.Parse(ActualValue))
             {
-                ValueIO.Text = "0";
+                if (!Euro && !Pct)
+                {
+                    ValueIO.Text = "0";
+                }
+                else
+                {
+                    if (Euro)
+                    {
+                        ValueIO.Text = EuroPrefix + "0";
+                    }
+                    if (Pct)
+                    {
+                        ValueIO.Text = PctPrefix + "0";
+                    }
+                }
             }
         }
 
         private void Button_Click_Divide(object sender, RoutedEventArgs e)
         {
+            GetRidPrefix();
             HasFirstValue = true;
             doDiv = true;
-            Value1 = float.Parse(ValueIO.Text);
+            Value1 = float.Parse(ActualValue);
             ValueIn.Content = Value1;
-            if (Value1 == float.Parse(ValueIO.Text))
+            if (Value1 == float.Parse(ActualValue))
             {
-                ValueIO.Text = "0";
+                if (!Euro && !Pct)
+                {
+                    ValueIO.Text = "0";
+                }
+                else
+                {
+                    if (Euro)
+                    {
+                        ValueIO.Text = EuroPrefix + "0";
+                    }
+                    if (Pct)
+                    {
+                        ValueIO.Text = PctPrefix + "0";
+                    }
+                }
+            }
+        }
+        private void Button_Click_10(object sender, RoutedEventArgs e)
+        {
+            GetRidPrefix();
+            Value2 = float.Parse(ActualValue);
+            if (Value2 == float.Parse(ActualValue))
+            {
+                var SplitPercentage = Value1 / Value2;
+                ValueIO.Text = Convert.ToString(SplitPercentage);
             }
         }
         private void Button_Click_Equals(object sender, RoutedEventArgs e)
         {
-            if(doPlus && HasFirstValue)
+            GetRidPrefix();
+            if (doPlus && HasFirstValue)
             {
                 doPlus = false;
-                Value2 = float.Parse(ValueIO.Text);
-                if(Value2 == float.Parse(ValueIO.Text))
+                Value2 = float.Parse(ActualValue);
+                if(Value2 == float.Parse(ActualValue))
                 {
-                    ValueIO.Text = Convert.ToString(Value1 + Value2);
-                    Value1 = float.Parse(ValueIO.Text);
-                    ValueIn.Content = Value1;
+                    if (!Euro && !Pct)
+                    {
+                        ValueIO.Text = Convert.ToString(Value1 + Value2);
+                    }
+                    else
+                    {
+                        if (Euro)
+                        {
+                            ValueIO.Text = EuroPrefix + Convert.ToString(Value1 + Value2);
+                        }
+                        if (Pct)
+                        {
+
+                        }
+                        
+                    }
+                    
+                    Value1 = float.Parse(ActualValue);
+                    ValueIn.Content = "";
                     Value2 = 0;
                 }
             }
@@ -105,12 +221,27 @@ namespace Calculator
             if(doMin && HasFirstValue)
             {
                 doMin = false;
-                Value2 = float.Parse(ValueIO.Text);
-                if (Value2 == float.Parse(ValueIO.Text))
+                Value2 = float.Parse(ActualValue);
+                if (Value2 == float.Parse(ActualValue))
                 {
-                    ValueIO.Text = Convert.ToString(Value1 - Value2);
-                    Value1 = float.Parse(ValueIO.Text);
-                    ValueIn.Content = Value1;
+                    if (!Euro && !Pct)
+                    {
+                        ValueIO.Text = Convert.ToString(Value1 - Value2);
+                    }
+                    else
+                    {
+                        if (Euro)
+                        {
+                            ValueIO.Text = EuroPrefix + Convert.ToString(Value1 - Value2);
+                        }
+                        if (Pct)
+                        {
+
+                        }
+
+                    }
+                    Value1 = float.Parse(ActualValue);
+                    ValueIn.Content = "";
                     Value2 = 0;
                 }
             }
@@ -118,12 +249,27 @@ namespace Calculator
             if (doMulti && HasFirstValue)
             {
                 doMulti = false;
-                Value2 = float.Parse(ValueIO.Text);
-                if (Value2 == float.Parse(ValueIO.Text))
+                Value2 = float.Parse(ActualValue);
+                if (Value2 == float.Parse(ActualValue))
                 {
-                    ValueIO.Text = Convert.ToString(Value1 * Value2);
-                    Value1 = float.Parse(ValueIO.Text);
-                    ValueIn.Content = Value1;
+                    if (!Euro && !Pct)
+                    {
+                        ValueIO.Text = Convert.ToString(Value1 * Value2);
+                    }
+                    else
+                    {
+                        if (Euro)
+                        {
+                            ValueIO.Text = EuroPrefix + Convert.ToString(Value1 * Value2);
+                        }
+                        if (Pct)
+                        {
+
+                        }
+
+                    }
+                    Value1 = float.Parse(ActualValue);
+                    ValueIn.Content = "";
                     Value2 = 0;
                 }
             }
@@ -131,18 +277,34 @@ namespace Calculator
             if (doDiv && HasFirstValue)
             {
                 doDiv = false;
-                Value2 = float.Parse(ValueIO.Text);
-                if (Value2 == float.Parse(ValueIO.Text))
+                Value2 = float.Parse(ActualValue);
+                if (Value2 == float.Parse(ActualValue))
                 {
-                    ValueIO.Text = Convert.ToString(Value1 / Value2);
-                    Value1 = float.Parse(ValueIO.Text);
-                    ValueIn.Content = Value1;
+                    if (!Euro && !Pct)
+                    {
+                        ValueIO.Text = Convert.ToString(Value1 / Value2);
+                    }
+                    else
+                    {
+                        if (Euro)
+                        {
+                            ValueIO.Text = EuroPrefix + Convert.ToString(Value1 / Value2);
+                        }
+                        if (Pct)
+                        {
+
+                        }
+
+                    }
+                    Value1 = float.Parse(ActualValue);
+                    ValueIn.Content = "";
                     Value2 = 0;
                 }
             }
         }
 
-        private void Button_Click_Clear(object sender, RoutedEventArgs e)
+
+        private void Clear()
         {
             Value1 = 0;
             Value2 = 0;
@@ -156,7 +318,12 @@ namespace Calculator
             doMin = false;
             doMulti = false;
             doDiv = false;
-    }
+            GetRidPrefix();
+        }
+        private void Button_Click_Clear(object sender, RoutedEventArgs e)
+        {
+            Clear();
+        }
 
 
 
@@ -164,118 +331,273 @@ namespace Calculator
         // Value Input Buttons 0 to 9
         private void Button_Click_0(object sender, RoutedEventArgs e)
         {
-            if(ValueIO.Text != "0")
+            if (!Euro)
             {
-                ValueIO.Text = ValueIO.Text + 0;
+                if (ValueIO.Text == "0")
+                {
+                    
+                }
+                else
+                {
+                    ValueIO.Text = ValueIO.Text + 0;
+                }
             }
-            
+            if (Euro)
+            {
+                GetRidPrefix();
+                if (ActualValue == "0")
+                {
+                    //ValueIO.Text = EuroPrefix + "0";
+                }
+                else
+                {
+                    ValueIO.Text = ValueIO.Text + "0";
+                }
+            }
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (ValueIO.Text == "0")
-            {
-                ValueIO.Text = "1";
-            }
-            else
-            {
-                ValueIO.Text = ValueIO.Text + 1;
-            }
+            
+           if (!Euro)
+           {
+              if (ValueIO.Text == "0")
+              {
+                  ValueIO.Text = "1";
+              }
+              else
+              {
+                  ValueIO.Text = ValueIO.Text + 1;
+              }
+           }
+           if (Euro)
+           {
+              GetRidPrefix();
+              if (ActualValue == "0")
+              {
+                  ValueIO.Text = EuroPrefix + "1";
+              }
+              else
+              {
+                  ValueIO.Text = ValueIO.Text + "1";
+              }
+           }
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            if (ValueIO.Text == "0")
+            if (!Euro)
             {
-                ValueIO.Text = "2";
+                if (ValueIO.Text == "0")
+                {
+                    ValueIO.Text = "2";
+                }
+                else
+                {
+                    ValueIO.Text = ValueIO.Text + 2;
+                }
             }
-            else
+            if (Euro)
             {
-                ValueIO.Text = ValueIO.Text + 2;
+                GetRidPrefix();
+                if (ActualValue == "0")
+                {
+                    ValueIO.Text = EuroPrefix + "2";
+                }
+                else
+                {
+                    ValueIO.Text = ValueIO.Text + "2";
+                }
             }
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            if (ValueIO.Text == "0")
+            if (!Euro)
             {
-                ValueIO.Text = "3";
+                if (ValueIO.Text == "0")
+                {
+                    ValueIO.Text = "3";
+                }
+                else
+                {
+                    ValueIO.Text = ValueIO.Text + 3;
+                }
             }
-            else
+            if (Euro)
             {
-                ValueIO.Text = ValueIO.Text + 3;
+                GetRidPrefix();
+                if (ActualValue == "0")
+                {
+                    ValueIO.Text = EuroPrefix + "3";
+                }
+                else
+                {
+                    ValueIO.Text = ValueIO.Text + "3";
+                }
             }
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            if (ValueIO.Text == "0")
+            if (!Euro)
             {
-                ValueIO.Text = "4";
+                if (ValueIO.Text == "0")
+                {
+                    ValueIO.Text = "4";
+                }
+                else
+                {
+                    ValueIO.Text = ValueIO.Text + 4;
+                }
             }
-            else
+            if (Euro)
             {
-                ValueIO.Text = ValueIO.Text + 4;
+                GetRidPrefix();
+                if (ActualValue == "0")
+                {
+                    ValueIO.Text = EuroPrefix + "4";
+                }
+                else
+                {
+                    ValueIO.Text = ValueIO.Text + "4";
+                }
             }
         }
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
-            if (ValueIO.Text == "0")
+            if (!Euro)
             {
-                ValueIO.Text = "5";
+                if (ValueIO.Text == "0")
+                {
+                    ValueIO.Text = "5";
+                }
+                else
+                {
+                    ValueIO.Text = ValueIO.Text + 5;
+                }
             }
-            else
+            if (Euro)
             {
-                ValueIO.Text = ValueIO.Text + 5;
+                GetRidPrefix();
+                if (ActualValue == "0")
+                {
+                    ValueIO.Text = EuroPrefix + "5";
+                }
+                else
+                {
+                    ValueIO.Text = ValueIO.Text + "5";
+                }
             }
         }
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
-            if (ValueIO.Text == "0")
+            if (!Euro)
             {
-                ValueIO.Text = "6";
+                if (ValueIO.Text == "0")
+                {
+                    ValueIO.Text = "6";
+                }
+                else
+                {
+                    ValueIO.Text = ValueIO.Text + 6;
+                }
             }
-            else
+            if (Euro)
             {
-                ValueIO.Text = ValueIO.Text + 6;
+                GetRidPrefix();
+                if (ActualValue == "0")
+                {
+                    ValueIO.Text = EuroPrefix + "6";
+                }
+                else
+                {
+                    ValueIO.Text = ValueIO.Text + "6";
+                }
             }
         }
 
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
-            if (ValueIO.Text == "0")
+            if (!Euro)
             {
-                ValueIO.Text = "7";
+                if (ValueIO.Text == "0")
+                {
+                    ValueIO.Text = "7";
+                }
+                else
+                {
+                    ValueIO.Text = ValueIO.Text + 7;
+                }
             }
-            else
+            if (Euro)
             {
-                ValueIO.Text = ValueIO.Text + 7;
+                GetRidPrefix();
+                if (ActualValue == "0")
+                {
+                    ValueIO.Text = EuroPrefix + "7";
+                }
+                else
+                {
+                    ValueIO.Text = ValueIO.Text + "7";
+                }
             }
         }
 
         private void Button_Click_8(object sender, RoutedEventArgs e)
         {
-            if (ValueIO.Text == "0")
+            if (!Euro)
             {
-                ValueIO.Text = "8";
+                if (ValueIO.Text == "0")
+                {
+                    ValueIO.Text = "8";
+                }
+                else
+                {
+                    ValueIO.Text = ValueIO.Text + 8;
+                }
             }
-            else
+            if (Euro)
             {
-                ValueIO.Text = ValueIO.Text + 8;
+                GetRidPrefix();
+                if (ActualValue == "0")
+                {
+                    ValueIO.Text = EuroPrefix + "8";
+                }
+                else
+                {
+                    ValueIO.Text = ValueIO.Text + "8";
+                }
             }
         }
 
         private void Button_Click_9(object sender, RoutedEventArgs e)
         {
-            if (ValueIO.Text == "0")
+            if (!Euro)
             {
-                ValueIO.Text = "9";
+                if (ValueIO.Text == "0")
+                {
+                    ValueIO.Text = "9";
+                }
+                else
+                {
+                    ValueIO.Text = ValueIO.Text + 9;
+                }
             }
-            else
+            if (Euro)
             {
-                ValueIO.Text = ValueIO.Text + 9;
+                GetRidPrefix();
+                if (ActualValue == "0")
+                {
+                    ValueIO.Text = EuroPrefix + "9";
+                }
+                else
+                {
+                    ValueIO.Text = ValueIO.Text + "9";
+                }
             }
         }
 
@@ -286,15 +608,30 @@ namespace Calculator
 
         private void Button_Click_Dot(object sender, RoutedEventArgs e)
         {
-            if (ValueIO.Text.Contains("."))
-            {
-                return;
-            }
-            else
+            if (!ValueIO.Text.Contains("."))
             {
                 ValueIO.Text = ValueIO.Text + ".";
             }
             
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //Clear();
+            Euro = !Euro;
+            
+            if (!ValueIO.Text.Contains("€"))
+            {
+                ValueIO.Text = "€ " + ValueIO.Text;
+                return;
+            }
+            else
+            {
+                string[] vs = ValueIO.Text.Split('€', ' ');
+                ValueIO.Text = vs[vs.Length - 1];
+            }
+        }
+
+      
     }
 }

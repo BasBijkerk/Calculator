@@ -6,33 +6,35 @@
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="Calculator" Height="210.06" Width="262.173" WindowStyle="ToolWindow">
-    <Grid>
+        Title="Calculator" Height="228.56" Width="163.673" WindowStyle="ToolWindow">
+    <Grid HorizontalAlignment="Left" Width="251" Margin="0,0,-116,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="36*"/>
             <ColumnDefinition Width="8*"/>
             <ColumnDefinition Width="83*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="+" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_Plus"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="34,99,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_Min"/>
-        <Button Content="=" HorizontalAlignment="Left" Margin="137,149,0,0" VerticalAlignment="Top" Width="20" Grid.Column="2" Click="Button_Click_Equals"/>
-        <Button Content="/" HorizontalAlignment="Left" Margin="12,99,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_Divide" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <Button Content="." HorizontalAlignment="Left" Margin="112,149,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_Dot" Grid.Column="2"/>
-        <Button Content="0" HorizontalAlignment="Left" Margin="10,149,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_0"/>
-        <Button Content="1" HorizontalAlignment="Left" Margin="34,149,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_1"/>
-        <Button Content="2" HorizontalAlignment="Left" Margin="60,149,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_2" Grid.ColumnSpan="2"/>
-        <Button Content="3" HorizontalAlignment="Left" Margin="12,149,0,0" VerticalAlignment="Top" Width="20" Grid.Column="1" Click="Button_Click_3" Grid.ColumnSpan="2"/>
-        <Button Content="4" HorizontalAlignment="Left" Margin="21,149,0,0" VerticalAlignment="Top" Width="20" Grid.Column="2" Click="Button_Click_4"/>
-        <Button Content="5" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top" Width="20" RenderTransformOrigin="-0.253,0.463" Click="Button_Click_5"/>
-        <Button Content="6" HorizontalAlignment="Left" Margin="34,124,0,0" VerticalAlignment="Top" Width="20" RenderTransformOrigin="-2.345,0.644" Click="Button_Click_6"/>
-        <Button Content="7" HorizontalAlignment="Left" Margin="60,124,0,0" VerticalAlignment="Top" Width="20" RenderTransformOrigin="2.091,0.146" Click="Button_Click_7" Grid.ColumnSpan="2"/>
-        <Button Content="8" HorizontalAlignment="Left" Margin="12,124,0,0" VerticalAlignment="Top" Width="20" Grid.Column="1" RenderTransformOrigin="2.091,0.146" Click="Button_Click_8" Grid.ColumnSpan="2"/>
-        <Button Content="9" HorizontalAlignment="Left" Margin="21,124,0,0" VerticalAlignment="Top" Width="20" Grid.Column="2" RenderTransformOrigin="2.091,0.146" Click="Button_Click_9"/>
-        <Button Content="*" HorizontalAlignment="Left" Margin="60,99,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_Multiply" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="ValueIO" Grid.ColumnSpan="3" Height="24" Margin="10,10,10,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" TextChanged="TextBox_TextChanged"/>
-        <Button Content="C" HorizontalAlignment="Left" Margin="137,124,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_Clear" RenderTransformOrigin="1.989,0.445" Grid.Column="2"/>
-        <Label x:Name="ValueIn" Content="" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Width="79" Height="27" Grid.Column="2"/>
-        <Label Content="Last input Result:" HorizontalAlignment="Left" Margin="4,39,0,0" VerticalAlignment="Top" Width="101" Grid.ColumnSpan="3" Height="26"/>
+        <Button Content="+" HorizontalAlignment="Left" Margin="57,158,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_Plus" Grid.ColumnSpan="2"/>
+        <Button Content="-" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_Min" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Button Content="=" HorizontalAlignment="Left" Margin="19,158,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_Equals" Grid.Column="2"/>
+        <Button Content="/" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_Divide" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Button Content="." HorizontalAlignment="Left" Margin="8,158,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_Dot"/>
+        <Button Content="0" HorizontalAlignment="Left" Margin="32,158,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_0"/>
+        <Button Content="1" HorizontalAlignment="Left" Margin="8,133,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_1"/>
+        <Button Content="2" HorizontalAlignment="Left" Margin="32,133,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_2"/>
+        <Button Content="3" HorizontalAlignment="Left" Margin="58,133,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_3" Grid.ColumnSpan="2"/>
+        <Button Content="4" HorizontalAlignment="Left" Margin="8,108,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_4"/>
+        <Button Content="5" HorizontalAlignment="Left" Margin="32,108,0,0" VerticalAlignment="Top" Width="20" RenderTransformOrigin="-0.253,0.463" Click="Button_Click_5"/>
+        <Button Content="6" HorizontalAlignment="Left" Margin="58,108,0,0" VerticalAlignment="Top" Width="20" RenderTransformOrigin="-2.345,0.644" Click="Button_Click_6" Grid.ColumnSpan="2"/>
+        <Button Content="7" HorizontalAlignment="Left" Margin="8,83,0,0" VerticalAlignment="Top" Width="20" RenderTransformOrigin="2.091,0.146" Click="Button_Click_7"/>
+        <Button Content="8" HorizontalAlignment="Left" Margin="33,83,0,0" VerticalAlignment="Top" Width="20" RenderTransformOrigin="2.091,0.146" Click="Button_Click_8"/>
+        <Button Content="9" HorizontalAlignment="Left" Margin="58,83,0,0" VerticalAlignment="Top" Width="20" RenderTransformOrigin="2.091,0.146" Click="Button_Click_9" Grid.ColumnSpan="2"/>
+        <Button Content="*" HorizontalAlignment="Left" Margin="10,133,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_Multiply" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="ValueIO" Grid.ColumnSpan="3" Height="24" Margin="10,10,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="116"/>
+        <Button Content="C" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_Clear" RenderTransformOrigin="1.989,0.445" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Label x:Name="ValueIn" Content="" HorizontalAlignment="Left" Margin="47,39,0,0" VerticalAlignment="Top" Width="79" Height="27" Grid.ColumnSpan="3"/>
+        <Label Content="Input:" HorizontalAlignment="Right" Margin="0,39,9,0" VerticalAlignment="Top" Width="74" Grid.ColumnSpan="2" Height="26"/>
+        <Button Content="€" Grid.Column="2" HorizontalAlignment="Left" Margin="19,133,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click"/>
+        <Button Content="%" Grid.Column="2" HorizontalAlignment="Left" Margin="19,108,0,0" VerticalAlignment="Top" Width="20" Click="Button_Click_10" IsEnabled="False"/>
 
     </Grid>
 </Window>
